@@ -1,0 +1,10 @@
+<enemies>
+	<enemy id="1">
+		<stats hppool="100" strenght="10" speed="100"/>
+		<images attack="WorknameProject/Textures/EnemyAttack.png" death="WorknameProject/Textures/EnemyDeath.png" idle="WorknameProject/Textures/EnemyIdle.png" stagger="WorknameProject/Textures/EnemyStagger.png" walk="WorknameProject/Textures/EnemyWalk.png" attackCount="14" deathCount="19" idleCount="10" staggerCount="5" walkCount="8"/>
+	</enemy>
+	<enemy id="2">
+		<stats hppool="200" strenght="15" speed="50"/>
+		<images attack="WorknameProject/Textures/EnemyAttack1.png" death="WorknameProject/Textures/EnemyDeath1.png" idle="WorknameProject/Textures/EnemyIdle1.png" stagger="WorknameProject/Textures/EnemyStagger1.png" walk="WorknameProject/Textures/EnemyWalk1.png" attackCount="12" deathCount="16" idleCount="11" staggerCount="6" walkCount="24"/>
+	</enemy>		
+</enemies>	
