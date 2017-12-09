@@ -1,5 +1,5 @@
 #include "../include/AttackArea.hpp"
-#include <iostream>
+#include "../include/Unit.hpp"
 
 AttackArea::AttackArea(const sf::Vector2f& initPos, const sf::Vector2f& size, int _damage, Entity::EntityGroup _target)
 	: Entity(initPos, size, EntityGroup::GROUP_DANGERZONE)
@@ -29,8 +29,14 @@ Entity::EntityManagerRequest* AttackArea::update(float, b2World& world)
 
 void AttackArea::collisionEvent(Entity *other)
 {
-	if(other->whatGroup() == target)
+	Entity::EntityGroup group = other->whatGroup();
+	if(group == target && group & (Entity::EntityGroup::GROUP_PLAYER | Entity::EntityGroup::GROUP_ENEMY))
 	{
-		other->hurt(damage);
+		Unit *targeted = static_cast<Unit*>(other);
+		targeted->hurt(damage);
+		if(targeted->isAlive)
+		{
+			targeted->stagger();
+		}
 	}
 }

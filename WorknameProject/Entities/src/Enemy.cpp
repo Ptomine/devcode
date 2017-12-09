@@ -5,11 +5,11 @@ Enemy::Enemy(const sf::Vector2f& initPos, b2World& world, int hp, int strenght, 
 	: Unit(initPos, sf::Vector2f(20.0f, 10.0f), GROUP_ENEMY, world, Unit::UnitStats(hp, strenght, speed))
 	, curBehavior(INNACTIVITY)
 {
-	animationManager.addAnimation(STATE_ATTACK,  new Animation(sprite, attackpath,  sf::Vector2u(attackCount, 8), 0.8f, Animation::TYPE_SINGLE));
-	animationManager.addAnimation(STATE_DEATH,   new Animation(sprite, deathpath,   sf::Vector2u(deathCount, 8), 0.8f, Animation::TYPE_SINGLE));
-	animationManager.addAnimation(STATE_IDLE,    new Animation(sprite, idlepath,    sf::Vector2u(idleCount, 8), 0.8f, Animation::TYPE_REPEATING));
-	animationManager.addAnimation(STATE_STAGGER, new Animation(sprite, staggerpath, sf::Vector2u(staggerCount, 8),  0.8f, Animation::TYPE_SINGLE));
-	animationManager.addAnimation(STATE_WALK,    new Animation(sprite, walkpath,    sf::Vector2u(walkCount, 8),  0.8f, Animation::TYPE_REPEATING));
+	animationManager.addAnimation(STATE_ATTACK,  new Animation(sprite, attackpath,  sf::Vector2u(attackCount, 8),  0.8f, Animation::TYPE_SINGLE));
+	animationManager.addAnimation(STATE_DEATH,   new Animation(sprite, deathpath,   sf::Vector2u(deathCount, 8),   0.8f, Animation::TYPE_SINGLE));
+	animationManager.addAnimation(STATE_IDLE,    new Animation(sprite, idlepath,    sf::Vector2u(idleCount, 8),    0.8f, Animation::TYPE_REPEATING));
+	animationManager.addAnimation(STATE_STAGGER, new Animation(sprite, staggerpath, sf::Vector2u(staggerCount, 8), 0.3f, Animation::TYPE_SINGLE));
+	animationManager.addAnimation(STATE_WALK,    new Animation(sprite, walkpath,    sf::Vector2u(walkCount, 8),    0.8f, Animation::TYPE_REPEATING));
 
 	animationManager.setAnimation(STATE_IDLE);
 
@@ -65,6 +65,7 @@ Entity::EntityManagerRequest* Enemy::update(float deltaTime, b2World& world)
 
 	if(stats.hp <= 0 && state != STATE_DEATH)
 	{
+		isAlive = false;
 		state = STATE_DEATH;
 		animationManager.setAnimation(state);
 		isControllable = false;

@@ -8,7 +8,7 @@ Player::Player(const sf::Vector2f& initPos, b2World& world)
 	animationManager.addAnimation(STATE_ATTACK,  new Animation(sprite, "WorknameProject/Textures/PlayerAttack.png",  sf::Vector2u(12, 8), 0.8f, Animation::TYPE_SINGLE));
 	animationManager.addAnimation(STATE_DEATH,   new Animation(sprite, "WorknameProject/Textures/PlayerDeath.png",   sf::Vector2u(20, 8), 0.8f, Animation::TYPE_SINGLE));
 	animationManager.addAnimation(STATE_IDLE,    new Animation(sprite, "WorknameProject/Textures/PlayerIdle.png",    sf::Vector2u(8, 8),  0.8f , Animation::TYPE_REPEATING));
-	animationManager.addAnimation(STATE_STAGGER, new Animation(sprite, "WorknameProject/Textures/PlayerStagger.png", sf::Vector2u(6, 8),  0.8f, Animation::TYPE_SINGLE));
+	animationManager.addAnimation(STATE_STAGGER, new Animation(sprite, "WorknameProject/Textures/PlayerStagger.png", sf::Vector2u(6, 8),  0.3f, Animation::TYPE_SINGLE));
 	animationManager.addAnimation(STATE_EVADE,   new Animation(sprite, "WorknameProject/Textures/PlayerVapor.png",   sf::Vector2u(18, 8), 0.8f, Animation::TYPE_SINGLE));
 	animationManager.addAnimation(STATE_WALK,    new Animation(sprite, "WorknameProject/Textures/PlayerWalk.png",    sf::Vector2u(8, 8),  0.8f , Animation::TYPE_REPEATING));
 
@@ -66,6 +66,7 @@ Entity::EntityManagerRequest* Player::update(float deltaTime, b2World& world)
 
 	if(stats.hp <= 0 && state != STATE_DEATH)
 	{
+		isAlive = false;
 		state = STATE_DEATH;
 		animationManager.setAnimation(state);
 		isControllable = false;

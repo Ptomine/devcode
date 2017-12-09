@@ -24,6 +24,9 @@ public:
 	void collisionEvent(Entity*);
 
 	void hurt(int);
+	void stagger();
+	
+	bool isAlive;
 protected:
 	b2Body *physicalBody;
 	b2Vec2 movement;
@@ -43,7 +46,7 @@ protected:
 		STATE_STAGGER,
 		STATE_DEATH
 	} state;
-	
+
 	enum Direction
 	{
 		DIR_DOWN,

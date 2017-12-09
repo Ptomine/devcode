@@ -47,8 +47,6 @@ public:
 	EntityGroup whatGroup();
 
 	void setResponse(Entity*);
-
-	virtual void hurt(int) {}
 protected:
 	sf::Sprite sprite;
 

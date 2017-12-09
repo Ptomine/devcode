@@ -18,6 +18,7 @@ Unit::Unit(const sf::Vector2f& initPos, const sf::Vector2f& size, EntityGroup gr
 	, stats(_stats)
 	, actionTimer(0.0f)
 	, isControllable(true)
+	, isAlive(true)
 	, state(STATE_IDLE)
 	, currDir(DIR_DOWN)
 {
@@ -50,7 +51,19 @@ void Unit::collisionEvent(Entity*) {
 }
 
 
+
+
 void Unit::hurt(int dmg)
 {
 	stats.hp -= dmg;
+}
+
+
+
+
+void Unit::stagger()
+{
+	isControllable = false;
+	state = STATE_STAGGER;
+	animationManager.setAnimation(state);
 }
