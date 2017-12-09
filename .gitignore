@@ -4,7 +4,6 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile
 ThirdPartyLib/
-CMakeLists.txt
 .idea/
 cmake-build-debug/
 ThirdPartyLibs/libBox2D.a
