@@ -5,6 +5,7 @@
 #include "../../Core/include/GameSceneManager.hpp"
 #include "../../Core/include/EntityManager.hpp"
 #include "../../Core/include/Level.hpp"
+#include "../../Core/include/PlayerInterface.hpp"
 
 class DemoLevel : public BasicScene
 {
@@ -22,6 +23,7 @@ public:
 private:
 	Level level;
 	sf::View view;
+	PlayerInterface interface;
 	EntityManager *manager;
 
 	b2World world;

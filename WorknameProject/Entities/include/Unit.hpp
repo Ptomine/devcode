@@ -11,9 +11,10 @@ public:
 
 	struct UnitStats
 	{
-		UnitStats(int, int, float);
-		int hp;
-		int strenght;
+		UnitStats(float, float, float);
+		float maxHp;
+		float hp;
+		float strenght;
 		float speed;
 	};
 
@@ -23,9 +24,11 @@ public:
 	virtual void control(b2World&) = 0;
 	void collisionEvent(Entity*);
 
-	void hurt(int);
+	void hurt(float);
 	void stagger();
-	
+
+	UnitStats& getStats();
+
 	bool isAlive;
 protected:
 	b2Body *physicalBody;

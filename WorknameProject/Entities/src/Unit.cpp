@@ -1,8 +1,9 @@
 #include "../include/Unit.hpp"
 #include <iostream>
 
-Unit::UnitStats::UnitStats(int _hp, int _strenght, float _speed)
-	: hp(_hp)
+Unit::UnitStats::UnitStats(float _hp, float _strenght, float _speed)
+	: maxHp(_hp)
+	, hp(_hp)
 	, strenght(_strenght)
 	, speed(_speed)
 {
@@ -53,7 +54,7 @@ void Unit::collisionEvent(Entity*) {
 
 
 
-void Unit::hurt(int dmg)
+void Unit::hurt(float dmg)
 {
 	stats.hp -= dmg;
 }
@@ -66,4 +67,12 @@ void Unit::stagger()
 	isControllable = false;
 	state = STATE_STAGGER;
 	animationManager.setAnimation(state);
+}
+
+
+
+
+Unit::UnitStats& Unit::getStats()
+{
+	return stats;
 }

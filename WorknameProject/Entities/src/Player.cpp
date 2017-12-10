@@ -3,7 +3,7 @@
 #include <iostream>
 
 Player::Player(const sf::Vector2f& initPos, b2World& world)
-	: Unit(initPos, sf::Vector2f(20.0f, 10.0f), GROUP_PLAYER, world, Unit::UnitStats(100, 10, 100.0f))
+	: Unit(initPos, sf::Vector2f(20.0f, 10.0f), GROUP_PLAYER, world, Unit::UnitStats(100.0f, 10.0f, 100.0f))
 {
 	animationManager.addAnimation(STATE_ATTACK,  new Animation(sprite, "WorknameProject/Textures/PlayerAttack.png",  sf::Vector2u(12, 8), 0.8f, Animation::TYPE_SINGLE));
 	animationManager.addAnimation(STATE_DEATH,   new Animation(sprite, "WorknameProject/Textures/PlayerDeath.png",   sf::Vector2u(20, 8), 0.8f, Animation::TYPE_SINGLE));

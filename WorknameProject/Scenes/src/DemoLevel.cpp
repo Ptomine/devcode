@@ -6,7 +6,8 @@
 #include <tinyxml.h>
 
 DemoLevel::DemoLevel()
-	: manager(new EntityManager)
+	: interface(view)
+	, manager(new EntityManager)
 	, world(b2Vec2(0.0f, 0.0f))
 {
 }
@@ -29,11 +30,7 @@ void DemoLevel::initialize(sf::RenderWindow&)
 	createBarriers(level.getObjects("wall"));
 
 	enemyFromFile("WorknameProject/Textures/Levels/Demo/enemies.xml");
-	//manager->getEntity("EnemyName")->flatBody = world.CreateBody(&manager->getEntity("EnemyName")->bodyDef);
-	//manager->getEntity("EnemyName")->flatBody->CreateFixture(&manager->getEntity("EnemyName")->bodyShape, 1);
 	manager->addEntity("Player", new Player(level.getObject("player").shape.getPoint(0), world));
-	//manager->getEntity("playerName")->flatBody = world.CreateBody(&manager->getEntity("playerName")->bodyDef);
-	//manager->getEntity("playerName")->flatBody->CreateFixture(&manager->getEntity("playerName")->bodyShape, 1);
 }
 
 
@@ -44,6 +41,8 @@ BasicScene* DemoLevel::update(sf::RenderWindow& window, float deltaTime)
 	view.setCenter(manager->getEntity(Entity::GROUP_PLAYER, "Player")->getSprite().getPosition());
 	view.setSize(1280.f, 720.f);
 	window.setView(view);
+	interface.update(static_cast<Player*>(manager->getEntity(Entity::GROUP_PLAYER, "Player"))->getStats());
+
 	world.Step(deltaTime, 8, 3);
 	manager->update(deltaTime, world);
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
@@ -78,7 +77,7 @@ void DemoLevel::render(sf::RenderWindow& window)
 	manager->render(window);
 	level.drawLayer(window, 2);
 	level.drawLayer(window, 3);
-
+	interface.render(window);
 }
 
 void DemoLevel::enemyFromFile(std::string path) {
