@@ -34,10 +34,11 @@ Entity::Entity(const sf::Vector2f& initPos, const sf::Vector2f& size, Entity::En
 	, group(_group)
 	, active(true)
 	, response(nullptr)
+	, live(true)
 {
-	sprite.setOrigin(sprite.getLocalBounds().width / 2.0f, sprite.getLocalBounds().height / 2.0f);
+	sprite.setOrigin(sprite.getLocalBounds().width / 2.0f, sprite.getLocalBounds().height - 20.0f);
 	sprite.setPosition(initPos);
-	abstractBody.setOrigin(size.x / 2.0f, size.y / 2.0f);
+	abstractBody.setOrigin(size.x / 2.0f, size.y / 2.f);
 	abstractBody.setPosition(initPos);
 }
 
@@ -71,7 +72,9 @@ bool Entity::isActive()
 }
 
 
-
+bool Entity::isLive() {
+	return live;
+}
 
 void Entity::setGroup(Entity::EntityGroup _group)
 {

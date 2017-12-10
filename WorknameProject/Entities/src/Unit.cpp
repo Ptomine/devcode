@@ -56,6 +56,9 @@ void Unit::collisionEvent(Entity*) {
 void Unit::hurt(int dmg)
 {
 	stats.hp -= dmg;
+	if(stats.hp <= 0) {
+		live = false;
+	}
 }
 
 
@@ -67,3 +70,4 @@ void Unit::stagger()
 	state = STATE_STAGGER;
 	animationManager.setAnimation(state);
 }
+

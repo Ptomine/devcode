@@ -7,4 +7,12 @@
 		<stats hppool="200" strenght="15" speed="50"/>
 		<images attack="WorknameProject/Textures/EnemyAttack1.png" death="WorknameProject/Textures/EnemyDeath1.png" idle="WorknameProject/Textures/EnemyIdle1.png" stagger="WorknameProject/Textures/EnemyStagger1.png" walk="WorknameProject/Textures/EnemyWalk1.png" attackCount="12" deathCount="16" idleCount="11" staggerCount="6" walkCount="24"/>
 	</enemy>		
+	<enemy id="3">
+		<stats hppool="500" strenght="20" speed="350"/>
+		<images attack="WorknameProject/Textures/EnemyAttack2.png" death="WorknameProject/Textures/EnemyDeath2.png" idle="WorknameProject/Textures/EnemyIdle2.png" stagger="WorknameProject/Textures/EnemyStagger2.png" walk="WorknameProject/Textures/EnemyWalk2.png" attackCount="12" deathCount="15" idleCount="10" staggerCount="6" walkCount="12"/>
+	</enemy>
+	<enemy id="4">
+		<stats hppool="1000" strenght="70" speed="500"/>
+		<images attack="WorknameProject/Textures/EnemyAttack3.png" death="WorknameProject/Textures/EnemyDeath3.png" idle="WorknameProject/Textures/EnemyIdle3.png" stagger="WorknameProject/Textures/EnemyStagger3.png" walk="WorknameProject/Textures/EnemyWalk3.png" attackCount="19" deathCount="14" idleCount="10" staggerCount="5" walkCount="8"/>
+	</enemy>
 </enemies>	

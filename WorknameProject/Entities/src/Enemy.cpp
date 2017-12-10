@@ -84,7 +84,7 @@ Entity::EntityManagerRequest* Enemy::update(float deltaTime, b2World& world)
 
 
 void Enemy::control(b2World& world) {
-	if(!response->isActive()) {
+	if(!response->isLive()) {
 		return;
 	}
 	sf::Vector2f playerPos = response->getSprite().getPosition();
