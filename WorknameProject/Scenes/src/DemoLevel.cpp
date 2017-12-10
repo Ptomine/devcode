@@ -77,6 +77,7 @@ void DemoLevel::render(sf::RenderWindow& window)
 	level.drawLayer(window, 2);
 	manager->render(window);
 	level.drawLayer(window, 3);
+	level.drawLayer(window, 4);
 	interface.render(window);
 }
 
