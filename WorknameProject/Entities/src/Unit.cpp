@@ -57,6 +57,9 @@ void Unit::collisionEvent(Entity*) {
 void Unit::hurt(float dmg)
 {
 	stats.hp -= dmg;
+	if(stats.hp <= 0) {
+		live = false;
+	}
 }
 
 

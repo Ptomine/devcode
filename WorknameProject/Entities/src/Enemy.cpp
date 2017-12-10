@@ -74,6 +74,7 @@ Entity::EntityManagerRequest* Enemy::update(float deltaTime, b2World& world)
 	animationManager.update(currDir, deltaTime);
 	physicalBody->SetLinearVelocity(movement);
 	abstractBody.setPosition(physicalBody->GetPosition().x, physicalBody->GetPosition().y);
+	sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height - 20.f);
 	sprite.setPosition(abstractBody.getPosition());
 	movement.x = movement.y = 0.0f;
 
@@ -84,7 +85,11 @@ Entity::EntityManagerRequest* Enemy::update(float deltaTime, b2World& world)
 
 
 void Enemy::control(b2World& world) {
-	if(!response->isActive()) {
+	if(!response->isLive()) {
+		if(state!=STATE_IDLE) {
+			state = STATE_IDLE;
+			animationManager.setAnimation(state);
+		}
 		return;
 	}
 	sf::Vector2f playerPos = response->getSprite().getPosition();
@@ -93,8 +98,8 @@ void Enemy::control(b2World& world) {
 	float viewCos = ( playerPos.x - sprite.getPosition().x ) / distance;
 	float viewSin = ( playerPos.y - sprite.getPosition().y ) / distance;
 
-	UnitState newState = state;
-	Behavior newBehavior = INNACTIVITY;
+	UnitState newState = STATE_WALK;
+	Behavior newBehavior = curBehavior;
 	Direction newDir = currDir;
 	physicalBody->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
 
@@ -142,7 +147,6 @@ void Enemy::control(b2World& world) {
 		}
 
 		if(distance <= 50.f) {
-			currDir = newDir;
 			newState = STATE_ATTACK;
 			physicalBody->SetLinearVelocity(b2Vec2(0.f, 0.f));
 			isControllable = false;
@@ -150,10 +154,9 @@ void Enemy::control(b2World& world) {
 	}
 
 	if(curBehavior == INNACTIVITY) {
-		if((distance <= 360.f && visibility(world, playerPos) && (currDir == newDir) || (currDir == clockwiseDir) || (currDir == counterClockwiseDir)) || distance <= 55.f) {
+		if(((distance <= 360.f && visibility(world, playerPos) && (currDir == newDir) || (currDir == clockwiseDir) || (currDir == counterClockwiseDir))) || distance <= 60.f) {
 			newBehavior = AGGRESSION;
 			newState = STATE_WALK;
-			currDir = newDir;
 		} else {
 			newState = STATE_IDLE;
 			newBehavior = INNACTIVITY;
@@ -167,6 +170,10 @@ void Enemy::control(b2World& world) {
 
 	if(newBehavior != curBehavior) {
 		curBehavior = newBehavior;
+	}
+
+	if((curBehavior != INNACTIVITY) && (newDir != currDir)) {
+		currDir = newDir;
 	}
 }
 

@@ -26,7 +26,7 @@ DemoLevel::~DemoLevel()
 
 void DemoLevel::initialize(sf::RenderWindow&)
 {
-	level.loadFromFile("WorknameProject/Textures/Levels/Demo/DemoV2.tmx");
+	level.loadFromFile("WorknameProject/Textures/Levels/Demo/Final.tmx");
 	createBarriers(level.getObjects("wall"));
 
 	enemyFromFile("WorknameProject/Textures/Levels/Demo/enemies.xml");
@@ -74,8 +74,8 @@ void DemoLevel::render(sf::RenderWindow& window)
 {
 	level.drawLayer(window, 0);
 	level.drawLayer(window, 1);
-	manager->render(window);
 	level.drawLayer(window, 2);
+	manager->render(window);
 	level.drawLayer(window, 3);
 	interface.render(window);
 }
@@ -86,6 +86,7 @@ void DemoLevel::enemyFromFile(std::string path) {
 	TiXmlElement* enemiesBD = enemiesFile.FirstChildElement("enemies");
 
 	std::vector<Object> enemies = level.getObjects("enemy");
+	char index = '1';
 	for(auto& object: enemies) {
 		TiXmlElement* enemy = enemiesBD->FirstChildElement("enemy");
 			while(enemy) {
@@ -97,10 +98,13 @@ void DemoLevel::enemyFromFile(std::string path) {
 
 				TiXmlElement* images = enemy->FirstChildElement("images");
 
-				manager->addEntity(object.type, new Enemy(object.shape.getPoint(0), world, hp, strenght, speed,
+				std::string name = "Enemy";
+				name.push_back(index);
+				manager->addEntity(name, new Enemy(object.shape.getPoint(0), world, hp, strenght, speed,
 				                                      images->Attribute("attack"), images->Attribute("death"),
 				                                      images->Attribute("idle"), images->Attribute("stagger"),
 				                                      images->Attribute("walk"), atoi(images->Attribute("attackCount")), atoi(images->Attribute("deathCount")), atoi(images->Attribute("idleCount")), atoi(images->Attribute("staggerCount")), atoi(images->Attribute("walkCount"))));
+				index++;
 			}
 			enemy = enemy->NextSiblingElement("enemy");
 		}

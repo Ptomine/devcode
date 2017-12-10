@@ -42,6 +42,7 @@ public:
 
 	bool isColliding(Entity*);
 	bool isActive();
+	bool isLive();
 
 	void setGroup(EntityGroup);
 	EntityGroup whatGroup();
@@ -61,6 +62,7 @@ protected:
 
 	EntityGroup group;
 	bool active;
+	bool live;
 
 	Entity* response;
 };
