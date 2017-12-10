@@ -13,7 +13,7 @@ Enemy::Enemy(const sf::Vector2f& initPos, b2World& world, int hp, int strenght, 
 
 	animationManager.setAnimation(STATE_IDLE);
 
-	sprite.setOrigin(sprite.getLocalBounds().width / 2.0f, sprite.getLocalBounds().height - 40.f);
+	sprite.setOrigin(sprite.getLocalBounds().width / 2.0f, sprite.getLocalBounds().height *0.853f);
 }
 
 
@@ -74,7 +74,7 @@ Entity::EntityManagerRequest* Enemy::update(float deltaTime, b2World& world)
 	animationManager.update(currDir, deltaTime);
 	physicalBody->SetLinearVelocity(movement);
 	abstractBody.setPosition(physicalBody->GetPosition().x, physicalBody->GetPosition().y);
-	sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height - 20.f);
+	sprite.setOrigin(sprite.getLocalBounds().width/2, sprite.getLocalBounds().height * 0.853f);
 	sprite.setPosition(abstractBody.getPosition());
 	movement.x = movement.y = 0.0f;
 
