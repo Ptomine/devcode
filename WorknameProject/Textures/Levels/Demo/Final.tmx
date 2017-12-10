@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="left-up" width="35" height="33" tilewidth="160" tileheight="79" nextobjectid="26">
+<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="left-up" width="35" height="33" tilewidth="160" tileheight="79" nextobjectid="27">
  <tileset firstgid="1" name="floor2" tilewidth="160" tileheight="79" tilecount="45" columns="5">
   <image source="WorknameProject/Textures/Levels/Demo/floor2.png" trans="ff00ff" width="800" height="711"/>
  </tileset>
@@ -47,9 +47,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,15,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,2,2,2,7,11,2,2,2,2,2,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,4,1,1,1,14,6,1,1,1,1,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,4,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -202,9 +202,7 @@
   <object id="11" name="wall" x="1890" y="1097" width="40" height="82"/>
   <object id="12" name="wall" x="1458" y="1097" width="431" height="40"/>
   <object id="13" name="wall" x="1413" y="589" width="40" height="507"/>
-  <object id="14" name="wall" x="1452.28" y="544.263" width="318.459" height="43.4594"/>
-  <object id="15" name="wall" x="1731" y="462" width="40" height="81"/>
-  <object id="16" x="1855" y="551" width="386" height="40"/>
+  <object id="14" name="wall" x="1452.28" y="544.263" width="797" height="43.4594"/>
   <object id="17" name="wall" x="584" y="2055" width="477.262" height="40"/>
   <object id="18" name="wall" x="1027" y="1660" width="40" height="395"/>
   <object id="19" name="wall" x="1067" y="1660" width="1179" height="40"/>
@@ -214,5 +212,6 @@
   <object id="23" name="wall" x="1456" y="712" width="75" height="30"/>
   <object id="24" name="wall" x="1455" y="745" width="57" height="43"/>
   <object id="25" name="wall" x="860" y="1971" width="165" height="82"/>
+  <object id="26" name="wall" x="1455" y="589" width="77" height="54"/>
  </objectgroup>
 </map>
