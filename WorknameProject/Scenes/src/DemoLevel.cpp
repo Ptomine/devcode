@@ -2,6 +2,7 @@
 #include "../include/MainMenu.hpp"
 #include "../../Entities/include/Player.hpp"
 #include "../../Entities/include/Enemy.hpp"
+#include "../../Entities/include/InteractiveHeal.hpp"
 #include <iostream>
 #include <tinyxml.h>
 
@@ -31,6 +32,7 @@ void DemoLevel::initialize(sf::RenderWindow&)
 
 	enemyFromFile("WorknameProject/Textures/Levels/Demo/enemies.xml");
 	manager->addEntity("Player", new Player(level.getObject("player").shape.getPoint(0), world));
+	manager->addEntity("Potion", new InteractiveHeal(sf::Vector2f(720.f, 1700.f), sf::Vector2f(20.f, 20.f), 15));
 }
 
 

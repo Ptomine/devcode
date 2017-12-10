@@ -10,7 +10,7 @@ public:
 	InteractiveHeal(const sf::Vector2f&, const sf::Vector2f&, int);
 	~InteractiveHeal();
 
-	EntityManagerRequest* update(float);
+	EntityManagerRequest* update(float, b2World&);
 	void collisionEvent(Entity*);
 private:
 	int power;
