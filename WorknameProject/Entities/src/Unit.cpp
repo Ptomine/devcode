@@ -48,7 +48,8 @@ Unit::~Unit()
 
 
 
-void Unit::collisionEvent(Entity*) {
+void Unit::collisionEvent(Entity*)
+{
 }
 
 

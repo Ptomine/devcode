@@ -73,12 +73,20 @@ void EntityManager::update(float deltaTime, b2World& world)
 
 void EntityManager::render(sf::RenderWindow& window)
 {
+	draw_queue queue;
+
 	for(auto& iteratorArr : all)
 	{
 		for(auto& iteratorMap : iteratorArr)
 		{
-			window.draw(iteratorMap.second->getSprite());
+			queue.push(iteratorMap.second);
 		}
+	}
+
+	while(!queue.empty())
+	{
+		window.draw(queue.top()->getSprite());
+		queue.pop();
 	}
 }
 

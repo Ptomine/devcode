@@ -3,7 +3,10 @@
 
 #include <array>
 #include <unordered_map>
+#include <queue>
+
 #include <Box2D/Dynamics/b2World.h>
+
 #include "Entity.hpp"
 
 class EntityManager
@@ -25,5 +28,18 @@ private:
 
 	Entity::EntityManagerRequest* lastRequest;
 };
+
+
+
+
+struct axisYcomparator
+{
+	bool operator()(Entity *left, Entity *right) const
+	{
+		return left->getSprite().getPosition().y < right->getSprite().getPosition().y;
+	}
+};
+
+typedef std::priority_queue<Entity*, std::vector<Entity*>, axisYcomparator> draw_queue;
 
 #endif //ENTITY_MANAGER_HPP
